@@ -1,0 +1,26 @@
+# Build
+sh buildDockerImage.sh -v 14.1.1.0 -g
+sh buildDockerImage.sh -v 12.2.1.4 -g
+
+# Run
+
+docker run -d -p 7001:7001 -p 9002:9002 \
+-v /mnt/c/www/OracleWebLogic/dockerfiles/14.1.1.0/properties/:/u01/oracle/properties \
+-v /mnt/c/www/OracleWebLogic/weblogic-external:/var/weblogic-external \
+-v /mnt/c/www/OracleWebLogic/weblogic-external-data:/var/weblogic-external-data \
+--name weblogic2 oracle/weblogic:14.1.1.0-generic
+
+docker run -d -p 7001:7001 -p 9002:9002 \
+-v /mnt/c/www/OracleWebLogic/dockerfiles/14.1.1.0/properties/:/u01/oracle/properties \
+-v /mnt/c/www/OracleWebLogic/weblogic-external:/var/weblogic-external \
+-v /mnt/c/www/OracleWebLogic/weblogic-external-data:/var/weblogic-external-data \
+--name weblogic-12.2.1.4 oracle/weblogic:12.2.1.4-generic
+
+DtK8M0gV
+
+cedaeMailSession
+mail/cedaeMailSession
+mail.smtp.connectiontimeout=10000
+mail.smtp.timeout=10000
+mail.transport.protocol=smtp
+mail.smtp.host=smtp.cedae.corp
